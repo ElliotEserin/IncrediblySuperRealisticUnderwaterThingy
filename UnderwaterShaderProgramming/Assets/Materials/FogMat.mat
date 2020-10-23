@@ -24,11 +24,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DepthDistance: 90
-    - _DepthStart: -15
+    - _DepthDistance: 150
+    - _DepthStart: -30
     - _NoiseFrequency: 1
     - _NoiseScale: 1
     - _NoiseSpeed: 1
     - _PixelOffset: 0.005
     m_Colors:
-    - _FogColor: {r: 0.46904063, g: 0.98357844, b: 0.92678785, a: 1}
+    - _FogColor: {r: 0.43460667, g: 0.9120245, b: 0.9031719, a: 1}

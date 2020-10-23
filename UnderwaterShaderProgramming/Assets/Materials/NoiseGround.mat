@@ -38,5 +38,5 @@ Material:
     - _NoiseScale: 0.8
     - _Tess: 8
     m_Colors:
-    - _Color: {r: 0.9245283, g: 0.89337844, b: 0.8155037, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _NoiseOffset: {r: 0, g: 0, b: 0, a: 0}
