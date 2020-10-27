@@ -36,7 +36,7 @@ Material:
     - _Metallic: 0
     - _NoiseFrequency: 1.1
     - _NoiseScale: -0.8
-    - _Tess: 8
+    - _Tess: 1
     m_Colors:
     - _Color: {r: 0.9245283, g: 0.89337844, b: 0.8155037, a: 1}
     - _NoiseOffset: {r: 0, g: 0, b: 0, a: 0}

@@ -849,7 +849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1545964483}
-  speed: 12
+  mainCamera: {fileID: 963194228}
+  speed: 6
+  acceleration: 5
 --- !u!4 &1545964486
 Transform:
   m_ObjectHideFlags: 0
