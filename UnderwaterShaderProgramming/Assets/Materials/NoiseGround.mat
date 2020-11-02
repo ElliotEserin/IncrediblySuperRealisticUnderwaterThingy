@@ -25,7 +25,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 59dd567e2a49e9845a9dfc164ea6bdf2, type: 3}
-        m_Scale: {x: 25, y: 25}
+        m_Scale: {x: 40, y: 40}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 2800000, guid: c8e86b8c886e99a4ab1749426bfa199d, type: 3}
@@ -34,8 +34,8 @@ Material:
     m_Floats:
     - _Glossiness: 0.523
     - _Metallic: 0
-    - _NoiseFrequency: 0.35
-    - _NoiseScale: 0.8
+    - _NoiseFrequency: 2
+    - _NoiseScale: 1.3
     - _Tess: 8
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

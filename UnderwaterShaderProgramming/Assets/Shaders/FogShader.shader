@@ -3,9 +3,11 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		_FogColor("Fog Color", Color) = (1,1,1,1)
-		_DepthStart("Depth Start", float) = 1
-		_DepthDistance ("Depth Distance", float) = 1
+        _FogColor("Fog Color", Color) = (1,1,1,1)
+        _SecondaryFogColor("Second Fog Color", color) = (1,1,1,1)
+        _DepthStart("Depth Start", float) = 1
+        _DepthDistance ("Depth Distance", float) = 1
+        _PlayerDepth ("Player Depth", float) = 1
 	}
 	SubShader
 	{
@@ -21,8 +23,8 @@
 			#include "UnityCG.cginc"
 
 			sampler2D _CameraDepthTexture;
-			fixed4 _FogColor;
-			float _DepthStart, _DepthDistance;
+			fixed4 _FogColor, _SecondaryFogColor;
+			float _DepthStart, _DepthDistance, _PlayerDepth;
 
             struct appdata
             {
@@ -35,14 +37,17 @@
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
                 float4 scrPos : TEXCOORD1;
+                float height : TEXCOORD2;
             };
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
+                float3 worldPos = mul(unity_ObjectToWorld, o.vertex).xyz;
                 o.scrPos = ComputeScreenPos(o.vertex);
                 o.uv = v.uv;
+                o.height = v.vertex.y;
                 return o;
             }
 
@@ -52,7 +57,7 @@
 			{
 				float depthValue = Linear01Depth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.scrPos)).r) * _ProjectionParams.z;
 				depthValue = saturate((depthValue - _DepthStart) / _DepthDistance);
-				fixed4 fogColor = _FogColor * depthValue;
+				fixed4 fogColor = lerp(_FogColor, _SecondaryFogColor, i.height * _PlayerDepth) * depthValue;
 				fixed4 col = tex2Dproj(_MainTex, i.scrPos);
 				return lerp(col, fogColor, depthValue);
             }

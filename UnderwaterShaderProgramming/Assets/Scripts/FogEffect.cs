@@ -27,9 +27,11 @@ public class FogEffect : MonoBehaviour
     {
         var time = (transform.position.y - minHeight) * modifier;
         directionalLight.intensity = Mathf.Lerp(0.2f, 1f, time);
-        _mat.SetColor("_FogColor", fogColor.Evaluate(time));
+        _mat.SetColor("_FogColor", fogColor.Evaluate(0));
+        _mat.SetColor("_SecondaryFogCOlor", fogColor.Evaluate(1));
         _mat.SetFloat("_DepthStart", depthStart);
         _mat.SetFloat("_DepthDistance", depthDistance);
+        _mat.SetFloat("_PlayerDepth", time);
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
