@@ -30,7 +30,7 @@ Material:
     - _NoiseScale: 1
     - _NoiseSpeed: 1
     - _PixelOffset: 0.005
-    - _PlayerDepth: 0.981
+    - _PlayerDepth: 0.6769657
     m_Colors:
     - _FogColor: {r: 0.1699448, g: 0.42668393, b: 0.6320754, a: 1}
     - _SecondaryFogColor: {r: 0.2783019, g: 0.97922677, b: 1, a: 1}
