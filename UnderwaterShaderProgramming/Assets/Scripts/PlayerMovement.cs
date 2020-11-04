@@ -21,5 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Debug
         if(Input.GetKeyDown(KeyCode.P)) Debug.Break();
+        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
     }
 }

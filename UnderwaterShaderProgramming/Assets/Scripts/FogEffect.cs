@@ -10,6 +10,7 @@ public class FogEffect : MonoBehaviour
     public float minHeight;
     public float maxHeight;
     public float depthStart;
+    public float minLightIntensity, maxLightIntensity;
     public float depthDistance;
     public Light directionalLight;
 
@@ -26,7 +27,7 @@ public class FogEffect : MonoBehaviour
     void Update()
     {
         var time = (transform.position.y - minHeight) * modifier;
-        directionalLight.intensity = Mathf.Lerp(0.2f, 1f, time);
+        directionalLight.intensity = Mathf.Lerp(minLightIntensity, maxLightIntensity, time);
         _mat.SetColor("_FogColor", fogColor.Evaluate(0));
         _mat.SetColor("_SecondaryFogCOlor", fogColor.Evaluate(1));
         _mat.SetFloat("_DepthStart", depthStart);
