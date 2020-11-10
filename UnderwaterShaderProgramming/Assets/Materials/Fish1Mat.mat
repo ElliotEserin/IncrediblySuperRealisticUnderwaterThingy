@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fish1Mat
-  m_Shader: {fileID: 4800000, guid: 0525b57fb018fdf4e824d238e3e4139d, type: 3}
+  m_Shader: {fileID: 4800000, guid: 250ecd36ae180d24498e85165bd4b71b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -56,33 +56,47 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AmplitudeX: 0
+    - _AmplitudeY: 0.007
+    - _AmplitudeZ: 0.43
+    - _AnimationSpeed: 2
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DisplacementAmount: 0
-    - _DisplacementSpeed: 0
+    - _DisplacementAmount: 0.1
+    - _DisplacementSpeed: 1
     - _DstBlend: 0
-    - _EffectRadius: 0.1
+    - _EffectRadius: 1
+    - _FrequencyX: 0
+    - _FrequencyY: 0.36
+    - _FrequencyZ: 2.4
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _MaskOffset: 0
-    - _Metallic: 0
+    - _HeadLimit: -0.99
+    - _MaskOffset: 0.581
+    - _Metallic: 0.5
     - _Mode: 0
     - _MoveOffset: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Roll: 10
+    - _Scale: 0.01
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SpeedX: 0
+    - _SpeedY: 0.42
+    - _SpeedZ: 0.3
     - _SrcBlend: 1
-    - _StrideSpeed: 10
-    - _StrideStrength: 0
-    - _Threshold: 0
-    - _TranslationAmount: 0
+    - _StrideSpeed: 0.24
+    - _StrideStrength: 0.8
+    - _Threshold: 4
+    - _TranslationAmount: 0.1
     - _UVSec: 0
     - _WaveDensity: 1
-    - _WaveHeight: 0.02
-    - _WaveSpeed: 0.5
+    - _WaveHeight: 0.01
+    - _WaveSpeed: 2.49
+    - _Yaw: 20
     - _Yoffset: 0
     - _ZWrite: 1
     m_Colors:
