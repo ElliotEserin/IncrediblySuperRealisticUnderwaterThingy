@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float acceleration;
 
+    public GameObject godRay;
+
     void Update()
     {
         float x = Input.GetAxis("Horizontal");
@@ -18,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + Vector3.up * y + mainCamera.forward * z;
         Vector3 distance = Vector3.Lerp(controller.velocity, move * speed, acceleration * Time.deltaTime);
         controller.Move(distance * Time.deltaTime);
+
+        //move particles
+        var pos = transform.position; pos.y = godRay.transform.position.y;
+        godRay.transform.position = pos;
 
         //Debug
         if(Input.GetKeyDown(KeyCode.P)) Debug.Break();
