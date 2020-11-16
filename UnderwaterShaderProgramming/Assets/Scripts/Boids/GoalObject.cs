@@ -37,7 +37,7 @@ public class GoalObject : MonoBehaviour
     {
         while (Vector3.Distance(transform.position, targetPos) > 0.5f)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, lerpSpeed * Time.deltaTime);
             yield return null;
         }
     }
