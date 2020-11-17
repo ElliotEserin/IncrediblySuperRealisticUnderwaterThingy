@@ -5,11 +5,15 @@ using UnityEngine;
 public class MeshBounds : MonoBehaviour
 {
     public float extremeBound = 500;
+    public Terrain terrain;
 
     // Start is called before the first frame update
     void Start()
     {
-        MeshFilter meshFilter = GetComponent<MeshFilter>();
-        meshFilter.sharedMesh.bounds = new Bounds(transform.position, Vector3.one * extremeBound);
+        if(terrain == null)
+        {
+            MeshFilter meshFilter = GetComponent<MeshFilter>();
+            meshFilter.sharedMesh.bounds = new Bounds(transform.position, Vector3.one * extremeBound);
+        }
     }
 }
