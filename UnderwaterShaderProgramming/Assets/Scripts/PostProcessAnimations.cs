@@ -26,7 +26,7 @@ public class PostProcessAnimations : MonoBehaviour
         volume.profile.TryGetSettings(out dof);
         volume.profile.TryGetSettings(out bloom);
 
-        StartCoroutine(fade(lerpSpeed : 0.5f));
+        StartCoroutine(fade(lerpSpeed : 0.8f));
     }
 
     public static IEnumerator fade(float lerpSpeed = 1, float startValue = 300, float finalValue = 70)
