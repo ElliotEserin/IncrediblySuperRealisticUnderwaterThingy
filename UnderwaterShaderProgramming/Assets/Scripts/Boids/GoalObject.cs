@@ -8,6 +8,8 @@ public class GoalObject : MonoBehaviour
     public float maxMoveDistance = 10f;
     public float upperLimit, lowerLimit;
 
+    [HideInInspector] public Transform bait;
+
     private void Start()
     {
         transform.position = new Vector3(transform.position.x, (upperLimit + lowerLimit) / 2, transform.position.z);
@@ -35,9 +37,14 @@ public class GoalObject : MonoBehaviour
 
     IEnumerator MoveToPosition(Vector3 targetPos)
     {
+
         while (Vector3.Distance(transform.position, targetPos) > 0.5f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, lerpSpeed * Time.deltaTime);
+            if (bait == null)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, lerpSpeed * Time.deltaTime);
+            }
+
             yield return null;
         }
     }

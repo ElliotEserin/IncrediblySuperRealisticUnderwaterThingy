@@ -201,5 +201,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointLight: {fileID: 659738828829385557}
   intensityStrength: 1
-  scaleStrength: 0.5
+  scaleStrength: 0.05
   speed: 1
