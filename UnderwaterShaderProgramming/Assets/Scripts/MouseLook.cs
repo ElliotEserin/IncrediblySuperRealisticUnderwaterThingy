@@ -8,16 +8,19 @@ public class MouseLook : MonoBehaviour
     public Transform playerBody;
     public float mouseClamp = 90f;
     float xRotation = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (UIManager.paused)
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 

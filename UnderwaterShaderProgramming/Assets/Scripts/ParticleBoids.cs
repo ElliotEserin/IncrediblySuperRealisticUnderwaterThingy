@@ -25,6 +25,7 @@ public class ParticleBoids : MonoBehaviour
     ParticleSystem system;
     ParticleSystem.Particle[] fish;
     GoalObject target;
+    AudioSource audioSource;
 
     List<ParticleSystem.Particle> neighbors = new List<ParticleSystem.Particle>();
     ParticleSystem.Particle particle;
@@ -34,6 +35,7 @@ public class ParticleBoids : MonoBehaviour
     {
         system = GetComponent<ParticleSystem>();
         target = GetComponentInChildren<GoalObject>();
+        audioSource = GetComponentInChildren<AudioSource>();
 
         SetUp();
     }
@@ -41,6 +43,8 @@ public class ParticleBoids : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 mean = Vector3.zero;
+
         if(system.particleCount < 1 || fish.Length < 1)
         {
             SetUp();
@@ -63,7 +67,14 @@ public class ParticleBoids : MonoBehaviour
             var position = particle.position + velocity;
             particle = UpdateBoid(position, velocity);
             fish[f] = particle;
+
+            mean += particle.position;
         }
+
+        if(fish.Length != 0)
+            mean /= fish.Length;
+
+        audioSource.transform.position = mean;
 
         system.SetParticles(fish);
     }

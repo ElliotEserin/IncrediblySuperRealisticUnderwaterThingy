@@ -11,8 +11,13 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject godRay;
 
+    public PlayerAudio playerAudio;
+
     void Update()
     {
+        if (UIManager.paused)
+            return;
+
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Rise");
         float z = Input.GetAxis("Vertical");
@@ -21,12 +26,16 @@ public class PlayerMovement : MonoBehaviour
         Vector3 distance = Vector3.Lerp(controller.velocity, move * speed, acceleration * Time.deltaTime);
         controller.Move(distance * Time.deltaTime);
 
+        //Audio
+        if (move.magnitude > 0)
+            playerAudio.PlaySwimAudio();
+
         //move particles
         var pos = transform.position; pos.y = godRay.transform.position.y;
         godRay.transform.position = pos;
 
         //Debug
         if(Input.GetKeyDown(KeyCode.P)) Debug.Break();
-        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+        if (Input.GetKeyDown(KeyCode.Escape)) FindObjectOfType<UIManager>().Pause();
     }
 }
