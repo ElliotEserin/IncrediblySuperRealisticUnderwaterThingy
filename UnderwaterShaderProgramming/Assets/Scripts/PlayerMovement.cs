@@ -12,7 +12,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject godRay;
 
     public PlayerAudio playerAudio;
+    Animator anim;
 
+    private void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
     void Update()
     {
         if (UIManager.paused)
@@ -21,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Rise");
         float z = Input.GetAxis("Vertical");
+        anim.SetFloat("Vertical", z);
         //Vector3 move = transform.right * x + Vector3.up * y + transform.forward * z;
         Vector3 move = transform.right * x + Vector3.up * y + mainCamera.forward * z;
         Vector3 distance = Vector3.Lerp(controller.velocity, move * speed, acceleration * Time.deltaTime);

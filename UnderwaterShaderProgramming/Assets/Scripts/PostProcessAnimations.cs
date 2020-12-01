@@ -29,11 +29,13 @@ public class PostProcessAnimations : MonoBehaviour
 
     public static void StartFade()
     {
+        instance.StopAllCoroutines();
         instance.StartCoroutine(instance.Fade(lerpSpeed: 0.8f));
     }
 
     public static void StartReverseFade()
     {
+        instance.StopAllCoroutines();
         instance.StartCoroutine(instance.Fade(0.8f, 70, 300, 1.5f, 5f));
     }
 
