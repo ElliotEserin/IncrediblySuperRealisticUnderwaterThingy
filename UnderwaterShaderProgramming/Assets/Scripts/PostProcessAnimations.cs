@@ -36,7 +36,7 @@ public class PostProcessAnimations : MonoBehaviour
     public static void StartReverseFade()
     {
         instance.StopAllCoroutines();
-        instance.StartCoroutine(instance.Fade(0.8f, 70, 300, 1.5f, 5f));
+        instance.StartCoroutine(instance.Fade(0.8f, 70, 300, 1.5f, 2f));
     }
 
     public IEnumerator Fade(float lerpSpeed = 1, float startValue = 300, float finalValue = 70, float bloomStartValue = 5f, float bloomEndValue = 1.5f)

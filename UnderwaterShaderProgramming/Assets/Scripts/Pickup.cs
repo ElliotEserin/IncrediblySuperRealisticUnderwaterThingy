@@ -13,7 +13,7 @@ public class Pickup : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKey(KeyCode.E))
             {
                 Manager.AddPickup();
                 gameObject.SetActive(false);

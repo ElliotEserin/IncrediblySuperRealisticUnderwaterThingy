@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PhotoCamera : MonoBehaviour
 {
@@ -9,6 +10,18 @@ public class PhotoCamera : MonoBehaviour
 
     RenderTexture rt;
     Camera cam;
+
+    PostProcessVolume volume;
+    Bloom bloom;
+    DepthOfField dof;
+    ColorGrading colorGrading;
+
+    private void Start()
+    {
+        bloom = volume.profile.GetSetting<Bloom>();
+        dof = volume.profile.GetSetting<DepthOfField>();
+        colorGrading = volume.profile.GetSetting<ColorGrading>();
+    }
 
     private Camera Camera
     {
