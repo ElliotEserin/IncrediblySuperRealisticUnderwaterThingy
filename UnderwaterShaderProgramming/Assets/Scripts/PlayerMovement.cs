@@ -40,8 +40,6 @@ public class PlayerMovement : MonoBehaviour
         var pos = transform.position; pos.y = godRay.transform.position.y;
         godRay.transform.position = pos;
 
-        //Debug
-        if(Input.GetKeyDown(KeyCode.P)) Debug.Break();
         if (Input.GetKeyDown(KeyCode.Escape)) FindObjectOfType<UIManager>().Pause();
     }
 }
