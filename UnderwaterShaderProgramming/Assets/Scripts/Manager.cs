@@ -28,6 +28,11 @@ public class Manager : MonoBehaviour
         instance.numberOfPickups++;
         instance.pickupText.text = instance.prefix + instance.numberOfPickups + "/" + instance.maxPickups;
         FindObjectOfType<PlayerMovement>().speed += 0.5f;
+
+        if(instance.numberOfPickups >= instance.maxPickups)
+        {
+            instance.pickupText.text = "Completed!";
+        }
     }
     
 }

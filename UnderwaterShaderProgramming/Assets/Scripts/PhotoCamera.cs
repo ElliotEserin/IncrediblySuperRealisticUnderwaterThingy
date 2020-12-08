@@ -23,6 +23,8 @@ public class PhotoCamera : MonoBehaviour
     DepthOfField dof;
     ColorGrading colorGrading;
 
+
+
     BaitThrow bt;
 
     private void Start()
@@ -45,10 +47,7 @@ public class PhotoCamera : MonoBehaviour
     {
         if (Input.GetKeyDown(screenShotModeKey))
         {
-            photoCam.enabled = !photoCam.enabled;
-            cameraOverlay.SetActive(photoCam.enabled);
-            playerCam.enabled = !playerCam.enabled;
-            bt.enabled = !bt.enabled;
+            SwitchMode();
         }
 
         if (Input.GetKeyDown(screenshotKey))
@@ -60,6 +59,15 @@ public class PhotoCamera : MonoBehaviour
         if(photoCam.enabled)
             EditValues();
     }
+
+    void SwitchMode()
+    {
+        photoCam.enabled = !photoCam.enabled;
+        cameraOverlay.SetActive(photoCam.enabled);
+        playerCam.enabled = !playerCam.enabled;
+        bt.enabled = !bt.enabled;
+    }
+
     //public void Capture()
     //{
     //    _camera = GetComponent<Camera>();
@@ -84,6 +92,9 @@ public class PhotoCamera : MonoBehaviour
 
     public void SavePNG()
     {
+        if (photoCam.enabled)
+            SwitchMode();
+
         photoCam = GetComponent<Camera>();
         photoCam.targetTexture = texture;
         rt = photoCam.targetTexture;
@@ -112,6 +123,8 @@ public class PhotoCamera : MonoBehaviour
         photoCam.targetTexture = null;
 
         fileCounter++;
+
+        SwitchMode();
     }
 
     void EditValues()

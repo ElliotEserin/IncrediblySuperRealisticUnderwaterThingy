@@ -24,13 +24,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DepthDistance: 270
-    - _DepthStart: -50
+    - _DepthDistance: 300
+    - _DepthStart: -30
     - _NoiseFrequency: 1
     - _NoiseScale: 1
     - _NoiseSpeed: 1
     - _PixelOffset: 0.005
-    - _PlayerDepth: 1.0048541
+    - _PlayerDepth: 0.98
     m_Colors:
-    - _FogColor: {r: 0.44313726, g: 0.80333555, b: 0.85882354, a: 1}
+    - _FogColor: {r: 0.2741189, g: 0.5897862, b: 0.754717, a: 1}
     - _SecondaryFogColor: {r: 0.2783019, g: 0.97922677, b: 1, a: 1}

@@ -287,8 +287,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 10
-      minScalar: 9
+      scalar: 1.25
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -749,7 +749,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.2
+      value: 1
       mode: 0
       spread: 0
       speed:
@@ -977,9 +977,9 @@ ParticleSystem:
       time: 0
       countCurve:
         serializedVersion: 2
-        minMaxState: 0
-        scalar: 100
-        minScalar: 30
+        minMaxState: 3
+        scalar: 7
+        minScalar: 3
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -4770,7 +4770,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf03e2a614720984980b4de687b28189, type: 2}
+  - {fileID: 2100000, guid: 3ee191a390cdd244aa916477d6b9c9bd, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4810,7 +4810,7 @@ ParticleSystemRenderer:
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: -5532684906560405489, guid: 7c85584f41d2182448b85ab236c2d31c, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 03ec6fcb126636441be043b882975138, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -4829,8 +4829,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishMaxSpeed: 0.1
   NeighborDistance: 1
-  CohesionStep: 100
-  CohesionWeight: 0.05
+  CohesionStep: 50
+  CohesionWeight: 0.01
   SeparationWeight: 0.01
   AlignmentWeight: 0.01
   SeekWeight: 0
