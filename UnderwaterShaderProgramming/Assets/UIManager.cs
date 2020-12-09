@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void OnVolumeChange()
+    public void Update()
     {
         mixer.SetFloat("Vol", volume.value);
     }

@@ -27,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
         float y = Input.GetAxis("Rise");
         float z = Input.GetAxis("Vertical");
         anim.SetFloat("Vertical", z);
+
+        if (z != 0)
+            controller.radius = 0.85f;
+        else
+            controller.radius = 0.5f;
+
         //Vector3 move = transform.right * x + Vector3.up * y + transform.forward * z;
         Vector3 move = transform.right * x + Vector3.up * y + mainCamera.forward * z;
         Vector3 distance = Vector3.Lerp(controller.velocity, move * speed, acceleration * Time.deltaTime);

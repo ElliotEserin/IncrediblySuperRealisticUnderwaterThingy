@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4975665286192132234}
   - component: {fileID: 4975665286192132233}
   m_Layer: 0
-  m_Name: FishParticle
+  m_Name: SharkParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -666,7 +666,7 @@ ParticleSystem:
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 0
+    radiusThickness: 0.2
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
@@ -749,7 +749,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 5
+      value: 1
       mode: 0
       spread: 0
       speed:
@@ -977,9 +977,9 @@ ParticleSystem:
       time: 0
       countCurve:
         serializedVersion: 2
-        minMaxState: 3
-        scalar: 7
-        minScalar: 3
+        minMaxState: 0
+        scalar: 1
+        minScalar: 1
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -4770,7 +4770,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3ee191a390cdd244aa916477d6b9c9bd, type: 2}
+  - {fileID: 2100000, guid: 324dfffa7961fcd4a9dbb9b10c888304, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4810,7 +4810,7 @@ ParticleSystemRenderer:
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: -2432090755550338912, guid: 03ec6fcb126636441be043b882975138, type: 3}
+  m_Mesh: {fileID: 3407769263123162018, guid: c516624efe285d2469b485db99b074cd, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -4829,10 +4829,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishMaxSpeed: 0.1
   NeighborDistance: 1
-  CohesionStep: 0
-  CohesionWeight: 0
-  SeparationWeight: 0.1
-  AlignmentWeight: 0
+  CohesionStep: 50
+  CohesionWeight: 0.01
+  SeparationWeight: 0.01
+  AlignmentWeight: 0.01
   SeekWeight: 0
   SocializeWeight: 0
   ArrivalSlowingDistance: 2
@@ -4863,7 +4863,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4975665287500149593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.96, y: -12.85, z: 9.15}
+  m_LocalPosition: {x: 9.53, y: -28.07, z: 5.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4975665286192132232}
@@ -4884,7 +4884,7 @@ MonoBehaviour:
   changeTime: 2
   lerpSpeed: 15
   maxMoveDistance: 30
-  upperLimit: 25
+  upperLimit: 15
   lowerLimit: 10
   bait: {fileID: 0}
 --- !u!65 &4975665287500149598

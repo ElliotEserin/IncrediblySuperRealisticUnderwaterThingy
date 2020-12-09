@@ -26,6 +26,9 @@ public class FogEffect : MonoBehaviour
 
     void Update()
     {
+        if (directionalLight == null)
+            return;
+
         var time = (transform.position.y - minHeight) * modifier;
         directionalLight.intensity = Mathf.Lerp(minLightIntensity, maxLightIntensity, time);
         _mat.SetColor("_FogColor", fogColor.Evaluate(0));

@@ -9,6 +9,21 @@ public class Pickup : MonoBehaviour
     public float scaleStrength;
     public float speed;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        FindObjectOfType<Manager>().eMessage.SetActive(true);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        FindObjectOfType<Manager>().eMessage.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<Manager>().eMessage.SetActive(false);
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -16,7 +31,7 @@ public class Pickup : MonoBehaviour
             if(Input.GetKey(KeyCode.E))
             {
                 Manager.AddPickup();
-                gameObject.SetActive(false);
+                Destroy(gameObject);
                 Debug.Log("Picked up collecatble");
             }
         }
@@ -26,6 +41,6 @@ public class Pickup : MonoBehaviour
     {
         var value = Mathf.Sin(Time.time * speed);
         pointLight.intensity = value * intensityStrength + intensityStrength;
-        transform.localScale = Vector3.one * (value * scaleStrength + (scaleStrength*2));
+        //transform.localScale = Vector3.one * (value * scaleStrength + (scaleStrength*2));
     }
 }

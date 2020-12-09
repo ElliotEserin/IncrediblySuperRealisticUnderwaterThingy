@@ -11,6 +11,8 @@ public class Manager : MonoBehaviour
     public Text pickupText;
     public string prefix = "Pickups collected: ";
 
+    public GameObject eMessage;
+
     static Manager instance;
 
     private void Awake()

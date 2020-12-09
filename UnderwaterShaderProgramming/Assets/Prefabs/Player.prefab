@@ -241,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 20
   playerBody: {fileID: 217066715887332100}
+  cameraPos: {fileID: 0}
   mouseClamp: 85
 --- !u!114 &217066716344798650
 MonoBehaviour:

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GoalObject : MonoBehaviour
 {
-    public float changeSpeed = 2f;
+    public float changeTime = 2f;
     public float lerpSpeed = 2f;
     public float maxMoveDistance = 10f;
     public float upperLimit, lowerLimit;
@@ -13,7 +13,7 @@ public class GoalObject : MonoBehaviour
     private void Start()
     {
         transform.position = new Vector3(transform.position.x, (upperLimit + lowerLimit) / 2, transform.position.z);
-        InvokeRepeating("MoveGoal", 0, changeSpeed);
+        InvokeRepeating("MoveGoal", 0, changeTime);
     }
 
     void MoveGoal()

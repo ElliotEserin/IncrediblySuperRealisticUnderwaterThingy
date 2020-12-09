@@ -6,6 +6,7 @@ public class MeshBounds : MonoBehaviour
 {
     public float extremeBound = 500;
     public Terrain terrain;
+    TerrainCollider terrainCol;
 
     // Start is called before the first frame update
     void Start()
