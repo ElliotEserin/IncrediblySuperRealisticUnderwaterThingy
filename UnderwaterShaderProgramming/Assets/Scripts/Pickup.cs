@@ -21,6 +21,7 @@ public class Pickup : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (FindObjectOfType<Manager>() != null)
         FindObjectOfType<Manager>().eMessage.SetActive(false);
     }
 

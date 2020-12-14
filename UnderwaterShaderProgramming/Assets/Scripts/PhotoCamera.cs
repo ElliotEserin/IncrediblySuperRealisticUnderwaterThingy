@@ -23,7 +23,9 @@ public class PhotoCamera : MonoBehaviour
     DepthOfField dof;
     ColorGrading colorGrading;
 
+    Value value = Value.BloomInt;
 
+    public UnityEngine.UI.Text valueDisplay;
 
     BaitThrow bt;
 
@@ -39,8 +41,6 @@ public class PhotoCamera : MonoBehaviour
             photoCam = GetComponent<Camera>();
         if (playerCam == null)
             playerCam = Camera.main;
-
-        Debug.Log(bloom + "\n" + dof + "\n" + colorGrading);
     }
 
     private void LateUpdate()
@@ -56,8 +56,15 @@ public class PhotoCamera : MonoBehaviour
             SavePNG();
         }
 
-        if(photoCam.enabled)
+        if (photoCam.enabled)
+        {
             EditValues();
+
+            if (Input.anyKeyDown)
+            {
+                SelectValue();
+            }
+        }
     }
 
     void SwitchMode()
@@ -66,29 +73,8 @@ public class PhotoCamera : MonoBehaviour
         cameraOverlay.SetActive(photoCam.enabled);
         playerCam.enabled = !playerCam.enabled;
         bt.enabled = !bt.enabled;
+        Debug.Log(photoCam.enabled + " " + playerCam.enabled);
     }
-
-    //public void Capture()
-    //{
-    //    _camera = GetComponent<Camera>();
-
-    //    RenderTexture activeRenderTexture = RenderTexture.active;
-    //    RenderTexture.active = Camera.targetTexture;
-
-    //    Camera.Render();
-
-    //    Texture2D image = new Texture2D(Camera.targetTexture.width, Camera.targetTexture.height);
-    //    image.ReadPixels(new Rect(0, 0, Camera.targetTexture.width, Camera.targetTexture.height), 0, 0);
-    //    image.Apply();
-
-    //    RenderTexture.active = activeRenderTexture;
-
-    //    byte[] bytes = image.EncodeToPNG();
-    //    Destroy(image);
-
-    //    File.WriteAllBytes("H:\\Pictures\\" + fileCounter + ".png", bytes);
-    //    fileCounter++;
-    //}
 
     public void SavePNG()
     {
@@ -110,7 +96,7 @@ public class PhotoCamera : MonoBehaviour
         tex.ReadPixels(new Rect(0, 0, mRt.width, mRt.height), 0, 0);
         tex.Apply();
 
-        File.WriteAllBytes("H:\\Pictures\\" + "Photo" + fileCounter + ".png", tex.EncodeToPNG());
+        File.WriteAllBytes("Photo" + fileCounter + ".png", tex.EncodeToPNG());
 
         DestroyImmediate(tex);
 
@@ -127,22 +113,72 @@ public class PhotoCamera : MonoBehaviour
         SwitchMode();
     }
 
+    void SelectValue()
+    {
+        if (Input.GetKeyDown(KeyCode.I)) { value = Value.BloomInt; }
+        else if (Input.GetKey(KeyCode.P)) { value = Value.DofAp; }
+        else if (Input.GetKey(KeyCode.F)) { value = Value.DofFocLen; }
+        else if (Input.GetKey(KeyCode.O)) { value = Value.DofFocDist; }
+        else if (Input.GetKey(KeyCode.T)) { value = Value.ColTemp; }
+        else if (Input.GetKey(KeyCode.Y)) { value = Value.ColTint; }
+
+        UpdateUI("Use scroll wheel to adjust value");
+    }
+
     void EditValues()
     {
-        float multiplier = Input.GetKey(KeyCode.LeftShift) ? -1 : 1;
-        multiplier *= Time.deltaTime * strength;
+        float input = Input.GetAxis("Mouse ScrollWheel");
 
-        //I changes intensity (bloom)
-        bloom.intensity.value += multiplier * (Input.GetKey(KeyCode.I) ? 1 : 0);
-        //P changes aperture (dof)
-        dof.aperture.value += multiplier * (Input.GetKey(KeyCode.P) ? 7.5f : 0);
-        //F changes focal length (dof)
-        dof.focalLength.value += multiplier * (Input.GetKey(KeyCode.F) ? 20 : 0);
-        //O changes focus distance (dof)
-        dof.focusDistance.value += multiplier * (Input.GetKey(KeyCode.O) ? 20 : 0);
-        //T changes temperature (Color grade)
-        colorGrading.temperature.value += multiplier * (Input.GetKey(KeyCode.T) ? 10 : 0);
-        //Y changes tint (Color Grade)
-        colorGrading.tint.value += multiplier * (Input.GetKey(KeyCode.Y) ? 10 : 0);
+        if (input == 0)
+            return;
+
+        switch (value)
+        {
+            default:
+            case Value.BloomInt:
+                bloom.intensity.value += input;
+                UpdateUI("Intensity", bloom.intensity.value);
+                break;
+            case Value.ColTemp:
+                colorGrading.temperature.value += input * 10f;
+                UpdateUI("Temperature", colorGrading.temperature.value);
+                break;
+            case Value.ColTint:
+                colorGrading.tint.value += input * 10;
+                UpdateUI("Tint", colorGrading.tint.value);
+                break;
+            case Value.DofAp:
+                dof.aperture.value += input * 5f;
+                UpdateUI("Aperture", dof.aperture.value);
+                break;
+            case Value.DofFocDist:
+                dof.focusDistance.value += input * 20f;
+                UpdateUI("Focus Distance", dof.focusDistance.value);
+                break;
+            case Value.DofFocLen:
+                dof.focalLength.value += input * 20f;
+                UpdateUI("Focal Length", dof.focalLength.value);
+                break;
+        }
+    }
+
+    void UpdateUI(string valueType, float value)
+    {
+        valueDisplay.text = valueType + ": " + Mathf.Round(value);
+    }
+
+    void UpdateUI(string message)
+    {
+        valueDisplay.text = message;
+    }
+
+    enum Value
+    {
+        BloomInt,
+        DofAp,
+        DofFocLen,
+        DofFocDist,
+        ColTemp,
+        ColTint
     }
 }

@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log("Playing");
         PostProcessAnimations.StartFade();
         mainMenu.SetActive(false);
         pauseMenu.SetActive(false);
@@ -46,7 +45,6 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
-        Debug.Log("Pausing");
         PostProcessAnimations.StartReverseFade();
         pauseMenu.SetActive(true);
         tutorial.SetActive(false);
@@ -66,5 +64,8 @@ public class UIManager : MonoBehaviour
     public void Update()
     {
         mixer.SetFloat("Vol", volume.value);
+
+        if (Input.GetKeyDown(KeyCode.H))
+            tutorial.GetComponent<Text>().enabled = !tutorial.GetComponent<Text>().enabled;
     }
 }
